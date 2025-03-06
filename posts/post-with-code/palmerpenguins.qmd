@@ -1,0 +1,173 @@
+---
+title: "palmerpenguins 데이터 분석"
+author: "정은주"
+date: "2025-03-07"
+format: html
+jupyter: python3
+---
+
+
+### 팔머 펭귄 데이터 분석 실습(8조 이주형, 이창혁, 정은주)
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN0a0aHzCUujR1EMQFoR3U6DTZXjXKs8kVpR7vuVj3dRRTnRlSC4QZVqNUlMwZxM6FKNs&usqp=CAU){fig-align="center" fig-width=100%}
+<br>
+
+다음과 같이 데이터를 로드하여 사용
+
+```{python}
+
+# pip install palmerpenguins
+
+# 데이터로드
+import pandas as pd
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+
+penguins.info()
+
+```
+
+info()를 사용하여 불러진 데이터를 확인할 수 있음
+
+<br>
+
+1.  각 펭귄의 개체별 수 확인하기
+
+```{python}
+penguins['species'].value_counts()
+```
+
+Adelie 종 152, Gentoo 종 124, Chinstrap 종 68이 있는 것으로 확인 가능
+
+<br><br>
+
+2.  각 펭귄의 종별 특징 찾기
+
+    -   Adelie 펭귄
+
+```{python}
+penguins.loc[penguins['species'] == 'Adelie'].describe()
+```
+
+
+<br>
+
+```         
+-   Gentoo 펭귄
+```
+
+```{python}
+penguins.loc[penguins['species'] == 'Gentoo'].describe()
+```
+
+
+<br>
+
+```         
+-   Chinstrap 펭귄
+```
+
+```{python}
+penguins.loc[penguins['species'] == 'Chinstrap'].describe()
+```
+
+
+
+### 3가지 종 특징 한눈에 비교하기
+
+```{python}
+#| code-fold: true
+ade_desc = penguins.loc[penguins['species'] == 'Adelie'].describe()
+gen_desc = penguins.loc[penguins['species'] == 'Gentoo'].describe()
+chin_desc = penguins.loc[penguins['species'] == 'Chinstrap'].describe()
+
+ade_mean = ade_desc.loc['mean']
+gen_mean = gen_desc.loc['mean']
+chin_mean = chin_desc.loc['mean']
+
+peng_mean = pd.concat([ade_mean, gen_mean, chin_mean], axis=1)
+peng_mean.columns= ['Adelie', 'Gentoo', 'Chinstrap']
+peng_mean
+```
+
+<br>
+
+
+Adelie 펭귄은 **bill_length_mm의 평균**이 38.79로 **가장 짧은 편**이다.
+
+Gentoo 펭귄은 **body_mass_g의 평균**이 5076.01로 **가장 무겁**다. Gentoo 펭귄은 **flipper_length_mm의 길이의 평균**이 217.18로 **가장 길다**.
+
+Chinstrap 펭귄은 수치 데이터로 **뚜렷한 특징을 찾을 수 없다**.
+
+
+<br><br>
+
+3.  각 펭귄의 성별분포 확인하기
+
+```{python}
+#| echo: false
+adelie_sex = penguins.loc[penguins['species'] == 'Adelie', 'sex'].value_counts()
+gentoo_sex = penguins.loc[penguins['species'] == 'Gentoo', 'sex'].value_counts()
+chinstrap_sex = penguins.loc[penguins['species'] == 'Chinstrap', 'sex'].value_counts()
+
+total_sex = pd.concat([adelie_sex,gentoo_sex,chinstrap_sex],axis=1)
+total_sex.columns= ['adelie','gentoo','chinstrap']
+total_sex
+```
+
+<br>
+성별은 고르게 분포되어 있다.
+
+<br><br>
+
+4.  각 펭귄별 서식지 분포 확인하기
+
+```{python}
+adelie_island = penguins.loc[penguins['species'] == 'Adelie', 'island'].value_counts()
+```
+
+```{python}
+gentoo_island = penguins.loc[penguins['species'] == 'Gentoo', 'island'].value_counts()
+```
+
+```{python}
+chinstrap_island = penguins.loc[penguins['species'] == 'Chinstrap', 'island'].value_counts()
+```
+
+
+### 3가지 종 서식지 분포 한눈에 확인하기
+
+```{python}
+total_island = pd.concat([adelie_island,gentoo_island,chinstrap_island],axis=1)
+total_island.columns= ['adelie','gentoo','chinstrap']
+total_island = total_island.fillna(0)
+total_island
+```
+
+
+<br>
+Adelie 펭귄은 **Dream, Torgersen, Biscoe 섬에 고루 서식**한다.
+Gentoo 펭귄 **Biscoe 섬에만 서식**한다.
+Chinstrap 펭귄은 **Dream 섬에만 서식**한다.
+
+<br><br>
+
+## 결과 요약
+
+<br>
+
++---------------+----------------------------------------------------+
+| 종류          | 특징                                               |
++===============+====================================================+
+| Adelie 펭귄   | bill_length_mm의 평균이 38.79로 가장 짧은 편       |
+|               |                                                    |
+|               | Dream, Torgersen, Biscoe 섬에 고루 서식            |
++---------------+----------------------------------------------------+
+| Gentoo 펭귄   | body_mass_g의 평균이 5076.01로 가장 무거움         |
+|               |                                                    |
+|               | flipper_length_mm의 길이의 평균이 217.18로 가장 김 |
+|               |                                                    |
+|               | Biscoe 섬에만 서식                                 |
++---------------+----------------------------------------------------+
+| Chinstrap     | Dream 섬에만 서식                                  |
++---------------+----------------------------------------------------+
+
