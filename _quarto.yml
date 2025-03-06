@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docx
+  output-dir: docs
 
 website:
   title: "eunju-blog"
