@@ -1,0 +1,12 @@
+{
+  "hash": "a55bb76c4519489826469fe37ce81b5e",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"나의 첫 블로그 포스트\"\nauthor: \"jeong eunju\"\ndate: \"2025-03-06\"\ncategories: [python, numpy, pandas]\nimage: \"image.jpg\"\n---\n\n\n## 파이썬 데이터 분석\n\n### 넘파이\n\n넘파이 패키지는 불러옵시다!\n\n::: {#0d8168b8 .cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\n```\n:::\n\n\n### 판다스\n\n판다스 패키지를 불러옵시다!\n\n::: {#89856533 .cell execution_count=2}\n``` {.python .cell-code}\nimport numpy as np\n```\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -1,0 +1,28 @@
+---
+title: "나의 첫 블로그 포스트"
+author: "jeong eunju"
+date: "2025-03-06"
+categories: [python, numpy, pandas]
+image: "image.jpg"
+---
+
+## 파이썬 데이터 분석
+
+### 넘파이
+
+넘파이 패키지는 불러옵시다!
+
+
+```{python}
+import pandas as pd
+```
+
+
+### 판다스
+
+판다스 패키지를 불러옵시다!
+
+
+```{python}
+import numpy as np
+```

@@ -8,7 +8,10 @@ image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN0a0aHzCUujR1EMQFo
 ---
 
 
+
+
 ### 팔머 펭귄 데이터 분석 실습(8조 이주형, 이창혁, 정은주)
+
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN0a0aHzCUujR1EMQFoR3U6DTZXjXKs8kVpR7vuVj3dRRTnRlSC4QZVqNUlMwZxM6FKNs&usqp=CAU){fig-align="center" fig-width=100%}
 <br>
 
