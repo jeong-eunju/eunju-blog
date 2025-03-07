@@ -4,6 +4,7 @@ author: "정은주"
 date: "2025-03-07"
 format: html
 jupyter: python3
+image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN0a0aHzCUujR1EMQFoR3U6DTZXjXKs8kVpR7vuVj3dRRTnRlSC4QZVqNUlMwZxM6FKNs&usqp=CAU
 ---
 
 
